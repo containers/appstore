@@ -1,0 +1,17 @@
+# Source: https://major.io/p/podman-quadlet-watchtower/
+# NOTE: Mounting podman socket + SecurityLabelDisable have security implications!
+[Unit]
+Description=Watchtower container updater
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+ContainerName=watchtower
+Image=ghcr.io/containrrr/watchtower
+Environment=WATCHTOWER_CLEANUP=true
+Environment=WATCHTOWER_POLL_INTERVAL=3600
+Volume=/var/run/docker.sock:/var/run/docker.sock
+SecurityLabelDisable=true
+
+[Install]
+WantedBy=multi-user.target default.target
