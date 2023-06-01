@@ -1,0 +1,24 @@
+[Unit]
+Description=Zerotier One Service
+Wants=network-online.target
+After=network-online.target
+
+# https://quay.io/repository/zyclonite/zerotier
+# - Chosen over zerotier/zerotier for better documentation
+
+# podman run --name zerotier-one \
+#   --device=/dev/net/tun --net=host \
+#   --cap-add=NET_ADMIN --cap-add=SYS_ADMIN \
+#   -v systemd-zerotier-one:/var/lib/zerotier-one \
+#   quay.io/zyclonite/zerotier:latest
+[Container]
+ContainerName=zerotier-one
+AddDevice=/dev/net/tun
+Network=host
+AddCapability=NET_ADMIN
+AddCapability=SYS_ADMIN
+Volume=zerotier-one.volume:/var/lib/zerotier-one
+Image=quay.io/zyclonite/zerotier:latest
+
+[Install]
+WantedBy=multi-user.target default.target
