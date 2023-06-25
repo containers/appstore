@@ -1,0 +1,26 @@
+{% if wanted_by is defined -%}
+[Install]
+WantedBy={{ wanted_by }}
+{%- endif %}
+
+[Container]
+Image=docker.io/library/postgres:{{ image_tag }}
+ContainerName=postgresql
+PublishPort=5432:{{ host_port | default(5432) }}
+Volume=postgresql.volume:/var/lib/pgsql/data:Z
+
+# Get the admin password from a precreated secret
+PodmanArgs=--secret=postgresql_admin_password_secret,type=env,target=POSTGRES_PASSWORD
+# Read additional environment variables from the file
+EnvironmentFile=./postgresql.env
+
+{% if postgresql_uid is defined -%}
+# Remap uid and gid
+RemapUsers=manual
+RemapUid={{ postgresql_uid }}:0:1
+RemapUid=0:1:{{ postgresql_uid }}
+RemapUid={{ postgresql_uid + 1 }}:{{ postgresql_uid + 1}}:{{65536 - postgresql_uid}}
+RemapGid={{ postgresql_uid }}:0:1
+RemapGid=0:1:{{ postgresql_uid }}
+RemapGid={{ postgresql_uid + 1 }}:{{ postgresql_uid + 1}}:{{65536 - postgresql_uid}}
+{%- endif %}
