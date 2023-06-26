@@ -6,7 +6,7 @@ WantedBy={{ wanted_by }}
 [Container]
 Image=docker.io/library/postgres:{{ image_tag }}
 ContainerName=postgresql
-PublishPort=5432:{{ host_port | default(5432) }}
+PublishPort={{ host_port | default(5432) }}:5432
 Volume=postgresql.volume:/var/lib/pgsql/data:Z
 
 # Get the admin password from a precreated secret
