@@ -1,0 +1,9 @@
+{% if wanted_by is defined -%}
+[Install]
+WantedBy={{ wanted_by }}
+{%- endif %}
+
+[Container]
+Image=docker.io/rroemhild/test-openldap:latest
+PublishPort={{ ldap_host_port | default(10389) }}:10389
+PublishPort={{ ldaps_host_port | default(10636) }}:10636
