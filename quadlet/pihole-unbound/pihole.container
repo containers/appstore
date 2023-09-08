@@ -1,0 +1,43 @@
+[Unit]
+Description=pihole_no_wireguard
+After=unbound.service
+Requires=unbound.service
+
+[Container]
+Image=docker.io/pihole/pihole:latest
+
+#flag for autoupdates
+AutoUpdate=registry
+
+# Use volume and network defined below
+Volume=systemd-pihole-unbound_pihole_volume:/etc/pihole
+Volume=systemd-pihole-unbound_pihole_dnsmasq:/etc/dnsmasq.d
+Network=pihole-unbound_home.network
+
+#Ports
+PublishPort=443/tcp
+PublishPort=53/tcp
+PublishPort=53/udp
+# PublishPort=67/udp # Uncomment if you want to use Pi-Hole for DHCP
+PublishPort=80/tcp
+PublishPort=22/tcp
+
+#Envirornment Variables
+EnvironmentFile=.env #use this for the web password or make a podman secret if you don't want it directly in the unit file
+Environment=FTLCONF_LOCAL_IPV4=192.168.7.8 # change as needed for your network's IP range.  It needs to be within the range of your pihole-unbound_home.network's range
+Environment=PIHOLE_DNS_=192.168.7.9 # Set to whatever IP your Unbound is set to.
+# Environment=WEBPASSWORD= #this variable will need to be set to enter the web portal, either through podman secrets, an env file, or directly in the unit file
+
+#Network
+HostName=pi-hole
+IP=192.168.7.8
+
+#Additional Args not Supported by Quadlet
+PodmanArgs=--mac-address d0:ca:ab:cd:ef:03 # Perhaps not strictly necessary, but having a consistent mac address will let you reserve your IP using your router more easily.  Make sure each container which is getting its own IP (unbound and pihole) each get unique mac's
+
+[Service]
+Restart=always
+
+[Install]
+# Start by default on boot
+WantedBy=multi-user.target default.target

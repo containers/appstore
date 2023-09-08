@@ -1,0 +1,32 @@
+[Unit]
+Description=unbound_no_wireguard
+Wants=pihole.service
+
+[Container]
+Image=docker.io/mvance/unbound:latest
+
+#flag for autoupdates
+AutoUpdate=registry
+
+# Use volume and network defined below
+Network=pihole-unbound_home.network
+
+#Ports
+PublishPort=53/tcp
+PublishPort=53/udp
+
+#Envirornment Variables
+
+#Network
+HostName=syn-unbound
+IP=192.168.7.9 # This should match the PIHOLE_DNS_ env variable in the pihole.container
+
+#Additional Args not Supported by Quadlet
+PodmanArgs=--mac-address d0:ca:ab:cd:ef:04
+
+[Service]
+Restart=always
+
+[Install]
+# Start by default on boot
+WantedBy=multi-user.target default.target

@@ -1,0 +1,6 @@
+[Network]
+Gateway=192.168.7.1. # replace this with your gateway's ip
+IPRange=192.168.7.8/30 #change as needed for your local network's IP range.  leave the /30 
+Subnet=192.168.7.0/24 ##change as needed for your local network's IP range.  leave the /24
+Driver=macvlan
+Options='parent=ens18' # place your system's network device's name here so it can get a different local IP than the server's 
