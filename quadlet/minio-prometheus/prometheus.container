@@ -1,12 +1,11 @@
 [Unit]
 Description=A Prometheus container for collecting metrics
-After=local-fs.target network-online.target prometheus-network.service
-Requires=prometheus-network.service
+After=local-fs.target network-online.target
 
 [Container]
 Image=docker.io/prom/prometheus:latest
 Network=bridge
-Network=prometheus
+Network=prometheus.network
 PublishPort=9090:9090
 Volume=./prometheus.yml:/etc/prometheus/prometheus.yml:ro
 
