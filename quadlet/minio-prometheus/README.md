@@ -13,7 +13,6 @@ To run this example, you can move the files in this directory to your `~/.config
 
 ```bash
 $ systemctl --user daemon-reload
-$ systemctl --user start prometheus.service
 $ systemctl --user start minio.service
 $ xdg-open http://localhost:9001
 ```
