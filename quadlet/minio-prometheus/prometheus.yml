@@ -7,4 +7,4 @@ scrape_configs:
     metrics_path: /minio/prometheus/metrics
     scheme: http
     static_configs:
-      - targets: ['systemd-minio:9000']
+      - targets: ['minio:9000']

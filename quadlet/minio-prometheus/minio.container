@@ -4,12 +4,13 @@ After=local-fs.target network-online.target prometheus.service
 Requires=prometheus.service
 
 [Container]
+ContainerName=minio
 Image=docker.io/minio/minio:latest
 Exec=server --console-address ":9001"
 Environment=MINIO_ROOT_USER=admin
 Environment=MINIO_ROOT_PASSWORD=password
 Environment=MINIO_VOLUMES=/data
-Environment=MINIO_PROMETHEUS_URL='http://systemd-prometheus:9090'
+Environment=MINIO_PROMETHEUS_URL='http://prometheus:9090'
 Environment=MINIO_PROMETHEUS_AUTH_TYPE='public'
 Environment=MINIO_PROMETHEUS_JOB_ID='minio-job'
 Network=bridge

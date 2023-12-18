@@ -3,6 +3,7 @@ Description=A Prometheus container for collecting metrics
 After=local-fs.target network-online.target
 
 [Container]
+ContainerName=prometheus
 Image=docker.io/prom/prometheus:latest
 Network=bridge
 Network=prometheus.network
