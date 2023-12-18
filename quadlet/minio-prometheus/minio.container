@@ -1,6 +1,7 @@
 [Unit]
 Description=A minio server contaienr for local S3 compatible storage
-After=local-fs.target network-online.target
+After=local-fs.target network-online.target prometheus.service
+Requires=prometheus.service
 
 [Container]
 Image=docker.io/minio/minio:latest
