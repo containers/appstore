@@ -5,8 +5,7 @@ After=local-fs.target network-online.target
 [Container]
 ContainerName=prometheus
 Image=docker.io/prom/prometheus:latest
-Network=bridge
-Network=prometheus.network
+Network=minio.network
 PublishPort=9090:9090
 Volume=./prometheus.yml:/etc/prometheus/prometheus.yml:Z
 
