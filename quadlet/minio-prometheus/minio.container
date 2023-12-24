@@ -1,0 +1,26 @@
+[Unit]
+Description=A minio server container for local S3 compatible storage
+After=local-fs.target network-online.target prometheus.service
+Requires=prometheus.service
+
+[Container]
+ContainerName=minio
+Image=docker.io/minio/minio:latest
+Exec=server --console-address ":9001"
+Environment=MINIO_ROOT_USER=admin
+Environment=MINIO_ROOT_PASSWORD=password
+Environment=MINIO_VOLUMES=/data
+Environment=MINIO_PROMETHEUS_URL='http://prometheus:9090'
+Environment=MINIO_PROMETHEUS_AUTH_TYPE='public'
+Environment=MINIO_PROMETHEUS_JOB_ID='minio-job'
+Network=minio.network
+PublishPort=9000:9000
+PublishPort=9001:9001
+Volume=%h/.local/share/minio-data:/data:Z
+
+[Service]
+TimeoutStartSec=900
+ExecStartPre=-mkdir -p %h/.local/share/minio-data
+
+[Install]
+WantedBy=multi-user.target
