@@ -1,0 +1,23 @@
+[Unit]
+Description=A Redpanda single node development cluster
+After=network-online.target
+
+[Container]
+Image=docker.redpanda.com/redpandadata/redpanda:latest
+ContainerName=redpanda-server
+Exec=start --config /etc/redpanda/config/redpanda-server.yml --mode dev-container
+Network=redpanda.network
+PublishPort=8081:18081
+PublishPort=8082:18082
+PublishPort=9092:19092
+PublishPort=9644:9644
+Volume=redpanda.volume:/var/lib/redpanda/data:Z
+Volume=./config/:/etc/redpanda/config/:Z
+UserNS=keep-id:uid=101,gid=101
+
+[Service]
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target
+Alias=redpanda.service
