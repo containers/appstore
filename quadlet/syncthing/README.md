@@ -5,7 +5,7 @@ Inspired by the following guide: <https://github.com/MMarco94/linux-guides/blob/
 
 ## Container Privileges
 - This container is expected to run as **non-root**
-- When initialising the systemd service, use `systemctl --usee`
+- When initialising the systemd service, use `systemctl --user`
 
 ## Volumes
 - Config Volume: As mentioned in the guide above, you can use ~/.config/syncthing
