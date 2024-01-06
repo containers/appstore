@@ -1,0 +1,33 @@
+[Unit]
+Description=syncthing-podman.service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Container]
+Image=docker.io/syncthing/syncthing:latest
+
+# Auto-update
+AutoUpdate=registry
+PublishPort=127.0.0.1:8384:8384
+PublishPort=22000:22000/tcp
+PublishPort=22000:22000/udp
+PublishPort=21027:21027/udp
+UserNS=keep-id:uid=1000,gid=1000
+
+# Folders
+
+# Config
+Volume=%h/.config/syncthing:/var/syncthing/config:Z
+
+# Shared
+Volume=%h/Sync:/var/syncthing/share1:Z 
+
+# For Local Discoverability
+Network=host
+
+[Install]
+WantedBy=default.target
