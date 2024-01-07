@@ -3,6 +3,15 @@ Inspired by the following guide: <https://github.com/MMarco94/linux-guides/blob/
 
 # Items to take note of:
 
+## Networking
+You can achieve networking for the container in the following 2 ways
+
+1. Setting Network=Host (Line 33)
+My preferred method as it works faster when my devices are on a local network
+
+2. Setting Published Ports (Lines 17-20)
+Performance is poorer but achieves network isolation from host
+
 ## Container Privileges
 - This container is expected to run as **non-root**
 - When initialising the systemd service, use `systemctl --user`
