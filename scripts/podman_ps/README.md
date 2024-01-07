@@ -13,4 +13,3 @@ There could be potential side effects of this tool like:
  * Create $HOME/.containers-or-config-or-something if there wasn't one.
  * Affect accounting: the machinectl session shows up under last.
  * Potentially side effects of accounts with different login shells, or strange environments
-
