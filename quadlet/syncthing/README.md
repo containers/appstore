@@ -22,4 +22,3 @@ Performance is poorer but achieves network isolation from host
 For ~/Sync add it as `Volume=%h/Sync:/var/syncthing/sync:Z`
 
 **Please create the above folders in your system before initialising the container, if not the service will error out**
-
