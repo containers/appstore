@@ -25,7 +25,7 @@ To interact with the Minio server using the [AWS CLI](https://aws.amazon.com/cli
 $ aws configure --profile minio
 AWS Access Key ID [None]: XL2HKL1bkDxeIEXAMPLE
 AWS Secret Access Key [None]: MCQNis0YSeFnQ0qgEZEheuqFeYJLJpxBSEXAMPLE
-Default region name [None]: 
+Default region name [None]:
 Default output format [None]:
 ```
 
