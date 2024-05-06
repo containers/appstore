@@ -1,0 +1,18 @@
+[Unit]
+Description=A Zot registry container
+After=network-online.target
+
+[Container]
+Image=ghcr.io/project-zot/zot-linux-amd64:latest
+AutoUpdate=registry
+ContainerName=zot-registry
+Exec=serve /etc/zot/config.yaml
+Volume=zot-registry.volume:/var/lib/zot/data:Z
+Volume=./config.yaml:/etc/zot/config.yaml:Z
+PublishPort=5000:5000
+
+[Service]
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target
