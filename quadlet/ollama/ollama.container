@@ -1,0 +1,17 @@
+[Unit]
+Description=An ollama container
+After=network-online.target
+
+[Container]
+Image=docker.io/ollama/ollama:latest
+AutoUpdate=registry
+ContainerName=ollama
+Network=ollama.network
+Volume=ollama.volume:/root/.ollama
+PublishPort=11434:11434
+
+[Service]
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target
