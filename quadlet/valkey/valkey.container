@@ -1,0 +1,18 @@
+[Unit]
+Description=A Valkey development container
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=docker.io/valkey/valkey:7.2
+AutoUpdate=registry
+ContainerName=valkey
+PublishPort=6379:6379
+Volume=valkey.volume:/data:Z
+
+[Service]
+# Pulling the image from the registry can take a while
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target
