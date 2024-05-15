@@ -1,0 +1,16 @@
+[Unit]
+Description=A Prometheus container for collecting metrics
+After=local-fs.target network-online.target
+
+[Container]
+ContainerName=prometheus
+Image=docker.io/prom/prometheus:latest
+Network=minio.network
+PublishPort=9090:9090
+Volume=./prometheus.yml:/etc/prometheus/prometheus.yml:ro,Z
+
+[Service]
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target
