@@ -1,0 +1,21 @@
+distspecversion: 1.0.1
+http:
+  address: 0.0.0.0
+  port: 5000
+storage:
+  rootdirectory: /var/lib/zot/data
+extensions:
+  search:
+    enable: true
+    cve:
+      updateInterval: 12h
+  ui:
+    enable: true
+  sync:
+    registries:
+      # Pull-through cache for ghcr.io/containers images
+      - urls:
+        - https://ghcr.io/containers
+        onDemand: true
+        content:
+          - prefix: "containers/**"
