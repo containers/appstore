@@ -1,0 +1,7 @@
+[Container]
+Image=docker.io/splunk/splunk:latest
+ContainerName=splunk
+PublishPort=8000:8000
+Environment=SPLUNK_START_ARGS='--accept-license'
+Secret=splunk-admin-password,type=env,target=SPLUNK_PASSWORD
+Volume=splunk.volume:/opt/splunk/var
