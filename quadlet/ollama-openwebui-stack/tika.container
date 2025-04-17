@@ -1,0 +1,25 @@
+[Unit]
+Description=Tika container for Open WebUI
+
+[Container]
+ContainerName=tika.container
+Image=docker.io/apache/tika:3.0.0.0-full
+Pod=ollama.pod
+
+Timezone=local
+
+AutoUpdate=registry
+
+LogDriver=journald
+LogOpt=tag=tika
+Notify=container
+
+Label=role=rag
+Label=app=ai
+
+[Service]
+Restart=unless-stopped
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target default.target

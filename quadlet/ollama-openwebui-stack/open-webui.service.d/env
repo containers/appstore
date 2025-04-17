@@ -1,0 +1,14 @@
+OLLAMA_BASE_URL=http://ollama.container:11434
+
+CONTENT_EXTRACTION_ENGINE=tika
+TIKA_SERVER_URL=http://tika.container:9998
+
+ENABLE_WEBSOCKET_SUPPORT=true
+WEBSOCKET_MANAGER=redis
+WEBSOCKET_REDIS_URL=redis://valkey.container:6379/1
+
+AUDIO_TTS_ENGINE=openai
+AUDIO_TTS_OPENAI_API_BASE_URL=http://edgetts.container:5050
+AUDIO_TTS_API_KEY=your_api_key_here
+AUDIO_TTS_VOICE=fr-FR-RemyMultilingualNeural
+AUDIO_TTS_MODEL=tts-1

@@ -1,0 +1,14 @@
+[Unit]
+Description=Podman Pod for Ollama
+
+[Pod]
+PodName=ollama.pod
+Network=ollama.network
+# for Ollama API:
+PublishPort=11434:11434
+# for Open WebUI:
+PublishPort=4080:8080
+# for Tika:
+PublishPort=9998:9998
+# for OpenTTS:
+PublishPort=5050:5050
