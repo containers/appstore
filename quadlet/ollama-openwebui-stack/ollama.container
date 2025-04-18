@@ -9,7 +9,6 @@ Pod=ollama.pod
 Timezone=local
 
 AddDevice=nvidia.com/gpu=all
-SecurityLabelDisable=true
 
 PodmanArgs=--cpus=38
 PodmanArgs=--cpu-shares=3072
