@@ -10,11 +10,6 @@ Timezone=local
 
 AddDevice=nvidia.com/gpu=all
 
-PodmanArgs=--cpus=38
-PodmanArgs=--cpu-shares=3072
-PodmanArgs=--memory=48g
-PodmanArgs=--memory-swap=64g
-
 EnvironmentFile=./%n.d/env
 
 AutoUpdate=registry
