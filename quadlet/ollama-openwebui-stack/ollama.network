@@ -1,6 +1,4 @@
 [Network]
-NetworkName=ollama.network
-Driver=bridge
 
 Label=role=network
 Label=app=ai

@@ -2,7 +2,7 @@
 Description=Valkey container for OpenWebUI
 
 [Container]
-ContainerName=valkey.container
+ContainerName=valkey
 Pod=ollama.pod
 Image=docker.io/valkey/valkey:8.0.2-alpine
 
@@ -22,7 +22,7 @@ Volume=valkey:/data
 
 LogDriver=journald
 LogOpt=tag=valkey
-Notify=container
+Notify=true
 
 Label=role=cache
 Label=app=ai

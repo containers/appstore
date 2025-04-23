@@ -2,7 +2,7 @@
 Description=Ollama container
 
 [Container]
-ContainerName=ollama.container
+ContainerName=ollama
 Image=docker.io/ollama/ollama:0.6.5
 Pod=ollama.pod
 
@@ -24,7 +24,7 @@ HealthRetries=5
 
 LogDriver=journald
 LogOpt=tag=ollama
-Notify=container
+Notify=true
 
 Label=role=models
 Label=app=ai

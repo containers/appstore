@@ -2,7 +2,7 @@
 Description=Tika container for Open WebUI
 
 [Container]
-ContainerName=tika.container
+ContainerName=tika
 Image=docker.io/apache/tika:3.0.0.0-full
 Pod=ollama.pod
 
@@ -12,7 +12,7 @@ AutoUpdate=registry
 
 LogDriver=journald
 LogOpt=tag=tika
-Notify=container
+Notify=true
 
 Label=role=rag
 Label=app=ai
