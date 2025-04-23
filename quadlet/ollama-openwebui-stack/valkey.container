@@ -2,7 +2,6 @@
 Description=Valkey container for OpenWebUI
 
 [Container]
-ContainerName=valkey
 Pod=ollama.pod
 Image=docker.io/valkey/valkey:8.0.2-alpine
 

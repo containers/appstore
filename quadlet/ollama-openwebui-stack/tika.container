@@ -2,7 +2,6 @@
 Description=Tika container for Open WebUI
 
 [Container]
-ContainerName=tika
 Image=docker.io/apache/tika:3.0.0.0-full
 Pod=ollama.pod
 

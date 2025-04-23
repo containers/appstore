@@ -2,7 +2,6 @@
 Description=Ollama container
 
 [Container]
-ContainerName=ollama
 Image=docker.io/ollama/ollama:0.6.5
 Pod=ollama.pod
 

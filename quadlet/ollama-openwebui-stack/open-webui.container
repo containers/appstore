@@ -2,7 +2,6 @@
 Description=Open-WebUI container
 
 [Container]
-ContainerName=openwebui
 Image=ghcr.io/open-webui/open-webui:latest
 Pod=ollama.pod
 

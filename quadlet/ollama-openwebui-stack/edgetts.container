@@ -2,7 +2,6 @@
 Description=OpenAI edge TTS container for Open WebUI
 
 [Container]
-ContainerName=edgetts
 Image=docker.io/travisvn/openai-edge-tts:latest
 Pod=ollama.pod
 
