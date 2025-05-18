@@ -1,0 +1,22 @@
+[Unit]
+Description=Caddy reverse proxy Quadlet
+
+[Container]
+Image=docker.io/caddy/caddy:latest
+ContainerName=caddy
+AutoUpdate=registry
+Volume=caddy_data.volume:/data:U
+Volume=caddy_config.volume:/config:U
+Volume=caddy_logs.volume:/logs:z,U
+Volume=./caddy:/etc/caddy:Z
+PublishPort=80:80
+PublishPort=443:443
+PublishPort=443:443/udp
+Network=pds.network
+UserNS=auto:size=28
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
