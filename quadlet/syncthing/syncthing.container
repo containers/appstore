@@ -24,7 +24,7 @@ UserNS=keep-id:uid=1000,gid=1000
 # Folders
 
 # Config
-Volume=%h/.config/syncthing:/var/syncthing/config:Z
+Volume=%E/syncthing:/var/syncthing/config:Z
 
 # Shared
 Volume=%h/Sync:/var/syncthing/share1:Z
