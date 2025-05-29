@@ -1,0 +1,34 @@
+[Unit]
+Description=Valkey container for OpenWebUI
+
+[Container]
+ContainerName=valkey
+Pod=ollama
+Image=docker.io/valkey/valkey:8.0.2-alpine
+
+Timezone=local
+
+Exec=valkey-server --save 30 1
+
+HealthCmd="[ $$(valkey-cli ping) = 'PONG' ]"
+HealthInterval=15s
+HealthStartPeriod=5s
+HealthRetries=5
+HealthTimeout=20s
+
+AutoUpdate=registry
+
+Volume=valkey:/data:Z
+
+LogDriver=k8s-file
+LogOpt=path=/tmp/valkey.log
+
+Label=role=cache
+Label=app=ai
+
+[Service]
+Restart=always
+TimeoutStartSec=30
+
+[Install]
+WantedBy=multi-user.target default.target
