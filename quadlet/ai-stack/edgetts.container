@@ -1,0 +1,24 @@
+[Unit]
+Description=OpenAI edge TTS container for Open WebUI
+
+[Container]
+ContainerName=edgetts
+Image=docker.io/travisvn/openai-edge-tts:latest
+Pod=ollama
+
+Timezone=local
+
+AutoUpdate=registry
+
+LogDriver=k8s-file
+LogOpt=path=/tmp/edgetts.log
+
+Label=role=tts
+Label=app=ai
+
+[Service]
+Restart=always
+TimeoutStartSec=30
+
+[Install]
+WantedBy=multi-user.target default.target

@@ -1,0 +1,41 @@
+[Unit]
+Description=Ollama container
+
+[Container]
+ContainerName=ollama
+Image=docker.io/ollama/ollama:latest
+Pod=ollama
+
+Timezone=local
+
+AddDevice=nvidia.com/gpu=all
+
+PodmanArgs=--cpus=38
+PodmanArgs=--cpu-shares=3072
+PodmanArgs=--memory=48g
+PodmanArgs=--memory-swap=64g
+
+EnvironmentFile=./%n.d/env
+
+AutoUpdate=registry
+
+Volume=ollama:/root/.ollama:Z
+
+HealthCmd="pgrep -x ollama || exit 1"
+HealthStartPeriod=5s
+HealthInterval=30s
+HealthTimeout=20s
+HealthRetries=5
+
+LogDriver=k8s-file
+LogOpt=path=/tmp/ollama.log
+
+Label=role=models
+Label=app=ai
+
+[Service]
+Restart=always
+TimeoutStartSec=60
+
+[Install]
+WantedBy=multi-user.target default.target
