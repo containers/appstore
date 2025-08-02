@@ -14,6 +14,7 @@ PublishPort=443:443
 PublishPort=443:443/udp
 Network=pds.network
 UserNS=auto:size=28
+ReloadCmd=caddy reload -c /etc/caddy/Caddyfile
 
 [Service]
 Restart=on-failure
