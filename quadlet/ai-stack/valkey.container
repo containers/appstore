@@ -4,7 +4,7 @@ Description=Valkey container for OpenWebUI
 [Container]
 ContainerName=valkey
 Pod=ollama
-Image=docker.io/valkey/valkey:8.0.2-alpine
+Image=docker.io/valkey/valkey:8.1.6-alpine
 
 Timezone=local
 
