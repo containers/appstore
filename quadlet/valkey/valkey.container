@@ -4,7 +4,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Container]
-Image=docker.io/valkey/valkey:7.2
+Image=docker.io/valkey/valkey:9.0
 AutoUpdate=registry
 ContainerName=valkey
 PublishPort=6379:6379
